@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ASM_P2</string>
+    <string name="todo">TODO</string>
+    <string name="description">logo</string>
 </resources>
