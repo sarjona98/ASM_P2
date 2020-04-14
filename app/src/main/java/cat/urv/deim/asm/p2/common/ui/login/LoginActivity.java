@@ -35,19 +35,26 @@ public class LoginActivity extends AppCompatActivity {
         final EditText usernameEditText = findViewById(R.id.username);
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.login);
-        final ProgressBar loadingProgressBar = findViewById(R.id.loading);
+        final Button anonymousButton = findViewById(R.id.anonymous);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadingProgressBar.setVisibility(View.VISIBLE);
-                    if (usernameEditText.getText().toString().equals("sandra.adams@email.com") && passwordEditText.getText().toString().equals("123456")) {
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class); // redirecting to MainActivity.
-                        startActivity(intent);
-                    } else {
-                        Intent intent = new Intent(LoginActivity.this, ErrorLoginActivity.class); // redirecting to ErrorLoginActivity.
-                        startActivity(intent);
-                    }
+                if (usernameEditText.getText().toString().equals("sandra.adams@email.com") && passwordEditText.getText().toString().equals("123456")) {
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class); // redirecting to MainActivity.
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(LoginActivity.this, ErrorLoginActivity.class); // redirecting to ErrorLoginActivity.
+                    startActivity(intent);
+                }
+            }
+        });
+
+        anonymousButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class); // redirecting to MainActivity.
+                startActivity(intent);
             }
         });
     }
