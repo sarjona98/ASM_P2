@@ -12,4 +12,10 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="be_in_touch">Be in touch</string>
+    <string name="error_sign_in">UPS... coudn\'t Sign In</string>
+    <string name="error_sign_in2">Your username and password don\'t match.</string>
+    <string name="error_sign_in3">Please, try again.</string>
+    <string name="try_again">TRY AGAIN</string>
+    <string name="skip_tutorial">Skip tutorial -></string>
 </resources>

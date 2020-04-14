@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
 
+import cat.urv.deim.asm.p2.common.ScreenSlidePageFragment;
+
+import cat.urv.deim.asm.p2.common.ScreenSlidePagerActivity;
 import cat.urv.deim.asm.p2.common.ui.login.LoginActivity;
 
 public class SplashActivity extends Activity {
@@ -20,7 +23,7 @@ public class SplashActivity extends Activity {
 
         new Handler().postDelayed(new Runnable(){
             public void run(){
-                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                Intent intent = new Intent(SplashActivity.this, ScreenSlidePagerActivity.class);
                 startActivity(intent);
                 finish();
             }
