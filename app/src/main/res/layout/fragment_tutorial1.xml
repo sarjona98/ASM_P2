@@ -39,6 +39,7 @@
             android:layout_width="252dp"
             android:layout_height="62dp"
             android:layout_marginStart="100dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="100dp"
             android:fontFamily="sans-serif-light"
             android:text="@string/be_in_touch"
@@ -49,6 +50,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_beintouch"
             tools:textColor="@android:color/white"
             tools:textStyle="bold" />
 

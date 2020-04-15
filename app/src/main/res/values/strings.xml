@@ -17,7 +17,7 @@
     <string name="error_sign_in2">Your username and password don\'t match.</string>
     <string name="error_sign_in3">Please, try again.</string>
     <string name="try_again">TRY AGAIN</string>
-    <string name="skip_tutorial">Skip tutorial -></string>
+    <string name="skip_tutorial">Skip tutorial</string>
 
     <string name="networking">Networking</string>
     <string name="learn">Learn</string>
