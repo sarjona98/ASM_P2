@@ -3,12 +3,12 @@ package cat.urv.deim.asm.p2.common;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 
-public class ScreenSlidePagerActivity extends FragmentActivity {
+public class TutorialActivity extends FragmentActivity {
     /**
      * The number of pages (wizard steps) to show in this demo.
      */
@@ -23,7 +23,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_screen_slide);
+        setContentView(R.layout.activity_tutorial);
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = findViewById(R.id.pager);
@@ -47,10 +47,10 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
     }
 
     /**
-     * A simple pager adapter that represents 5 ScreenSlidePageFragment objects, in
+     * A simple pager adapter that represents 5 Tutorial1Fragment objects, in
      * sequence.
      */
-    private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
+    public class ScreenSlidePagerAdapter extends FragmentPagerAdapter {
         public ScreenSlidePagerAdapter(FragmentManager fm) {
             //noinspection deprecation
             super(fm);
@@ -58,7 +58,13 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return new ScreenSlidePageFragment();
+            switch (position) {
+                case 0: return new Tutorial1Fragment();
+                case 1: return new Tutorial2Fragment();
+                case 2: return new Tutorial3Fragment();
+                default: return null;
+            }
+
         }
 
         @Override

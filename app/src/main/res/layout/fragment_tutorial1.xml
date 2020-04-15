@@ -1,50 +1,57 @@
-<!-- fragment_screen_slide_page.xml -->
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_light">
+    android:background="@color/colorAccent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/tutorial1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="541dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/beintouch"
+            android:id="@+id/img_beintouch"
             android:layout_width="0dp"
             android:layout_height="364dp"
             android:layout_centerInParent="true"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="125dp"
+            android:layout_marginTop="100dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="20dp"
             android:contentDescription="@string/description"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:src="@drawable/help_2"
-            app:layout_constraintBottom_toTopOf="@+id/textView"
+            android:src="@drawable/help_1"
+            app:layout_constraintBottom_toBottomOf="@+id/text_beintouch"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/text_beintouch"
+            android:layout_width="252dp"
+            android:layout_height="62dp"
             android:layout_marginStart="100dp"
-            android:layout_marginTop="20dp"
             android:layout_marginEnd="100dp"
+            android:fontFamily="sans-serif-light"
             android:text="@string/be_in_touch"
-            android:textSize="40sp"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="@android:color/white"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/beintouch"
             tools:textColor="@android:color/white"
             tools:textStyle="bold" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
 

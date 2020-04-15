@@ -16,6 +16,10 @@
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name=".TutorialActivity"
+            android:label="@string/title_activity_tutorial"
+            android:theme="@style/Theme.Design.NoActionBar" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +28,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".ScreenSlidePagerActivity" />
     </application>
 
 </manifest>

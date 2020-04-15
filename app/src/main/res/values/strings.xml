@@ -18,4 +18,8 @@
     <string name="error_sign_in3">Please, try again.</string>
     <string name="try_again">TRY AGAIN</string>
     <string name="skip_tutorial">Skip tutorial -></string>
+
+    <string name="networking">Networking</string>
+    <string name="learn">Learn</string>
+    <string name="title_activity_tutorial">TutorialActivity</string>
 </resources>
