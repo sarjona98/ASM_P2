@@ -45,7 +45,24 @@ public class TutorialActivity extends FragmentActivity {
          * The pager adapter, which provides the pages to the view pager widget.
          */
         final ProgressBar mProgressBar = findViewById(R.id.progressBar);
-        mProgressBar.setProgress(34);
+        final int[] i = {0};
+        mProgressBar.setProgress(i[0]);
+        CountDownTimer mCountDownTimer = new CountDownTimer(1000, 10) {
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                i[0]++;
+                mProgressBar.setProgress((i[0] < 34) ? i[0] : 33);
+
+            }
+
+            @Override
+            public void onFinish() {
+                //Do what you want
+
+            }
+        };
+        mCountDownTimer.start();
         PagerAdapter pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(pagerAdapter);
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -55,8 +72,23 @@ public class TutorialActivity extends FragmentActivity {
             }
 
             @Override
-            public void onPageSelected(int position) {
-                mProgressBar.setProgress((position+1)*33+1);
+            public void onPageSelected(final int position) {
+                CountDownTimer mCountDownTimer = new CountDownTimer(1000, 10) {
+
+                    int i = position*33+1;
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        i++;
+                        mProgressBar.setProgress(Math.min(i, (position + 1) * 33 + 1));
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        //Do what you want
+
+                    }
+                };
+                mCountDownTimer.start();
             }
 
             @Override
