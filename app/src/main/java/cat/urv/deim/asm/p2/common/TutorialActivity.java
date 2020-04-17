@@ -1,5 +1,6 @@
 package cat.urv.deim.asm.p2.common;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -9,10 +10,15 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import java.util.Timer;
 
 import cat.urv.deim.asm.p2.common.ui.login.LoginActivity;
 
@@ -38,8 +44,26 @@ public class TutorialActivity extends FragmentActivity {
         /*
          * The pager adapter, which provides the pages to the view pager widget.
          */
+        final ProgressBar mProgressBar = findViewById(R.id.progressBar);
+        mProgressBar.setProgress(34);
         PagerAdapter pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(pagerAdapter);
+        mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                mProgressBar.setProgress((position+1)*33+1);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         final TextView skip_tutorial1 = findViewById(R.id.textSkipTutorial);
         final ImageView skip_tutorial2 = findViewById(R.id.ivSkipTutorial);
@@ -59,6 +83,10 @@ public class TutorialActivity extends FragmentActivity {
                 startActivity(intent);
             }
         });
+
+
+
+
     }
 
     @Override
@@ -78,20 +106,21 @@ public class TutorialActivity extends FragmentActivity {
      * sequence.
      */
     public class ScreenSlidePagerAdapter extends FragmentPagerAdapter {
-        public ScreenSlidePagerAdapter(FragmentManager fm) {
+
+        ScreenSlidePagerAdapter(FragmentManager fm) {
             //noinspection deprecation
             super(fm);
+
         }
 
+        @NonNull
         @Override
         public Fragment getItem(int position) {
             switch (position) {
                 case 0: return new Tutorial1Fragment();
                 case 1: return new Tutorial2Fragment();
-                case 2: return new Tutorial3Fragment();
-                default: return null;
+                default: return new Tutorial3Fragment();
             }
-
         }
 
         @Override

@@ -8,9 +8,9 @@
     android:background="@color/colorAccent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/tutorial1"
+        android:id="@+id/tutorial3"
         android:layout_width="match_parent"
-        android:layout_height="541dp"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -21,25 +21,23 @@
             android:layout_height="364dp"
             android:layout_centerInParent="true"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="100dp"
             android:layout_marginEnd="10dp"
             android:contentDescription="@string/description"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:src="@drawable/help_3"
-            app:layout_constraintBottom_toBottomOf="@+id/text_learn"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.31" />
 
         <TextView
             android:id="@+id/text_learn"
             android:layout_width="252dp"
             android:layout_height="62dp"
             android:layout_marginStart="100dp"
-            android:layout_marginTop="15dp"
             android:layout_marginEnd="100dp"
             android:fontFamily="sans-serif-light"
             android:text="@string/learn"
@@ -47,10 +45,13 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="@android:color/white"
             android:textSize="36sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.512"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_learn"
+            app:layout_constraintVertical_bias="0.2"
             tools:textColor="@android:color/white"
             tools:textStyle="bold" />
 
