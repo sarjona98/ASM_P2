@@ -11,14 +11,10 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import java.util.Timer;
 
 import cat.urv.deim.asm.p2.common.ui.login.LoginActivity;
 
@@ -44,51 +40,69 @@ public class TutorialActivity extends FragmentActivity {
         /*
          * The pager adapter, which provides the pages to the view pager widget.
          */
-        final ProgressBar mProgressBar = findViewById(R.id.progressBar);
-        final int[] i = {0};
-        mProgressBar.setProgress(i[0]);
-        CountDownTimer mCountDownTimer = new CountDownTimer(1000, 10) {
+        PagerAdapter pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
+        mPager.setAdapter(pagerAdapter);
 
+        final ProgressBar initialProgressBar = findViewById(R.id.progressBar);
+        initialProgressBar.setProgress(0);
+        CountDownTimer initialCountDownTimer;
+
+        initialCountDownTimer = new CountDownTimer(1000, 10) {
             @Override
             public void onTick(long millisUntilFinished) {
-                i[0]++;
-                mProgressBar.setProgress((i[0] < 34) ? i[0] : 33);
-
+                initialProgressBar.setProgress(Math.min(initialProgressBar.getProgress()+1, 34));
             }
 
             @Override
             public void onFinish() {
+                initialProgressBar.setProgress(34);
                 //Do what you want
-
             }
         };
-        mCountDownTimer.start();
-        PagerAdapter pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
-        mPager.setAdapter(pagerAdapter);
+        initialCountDownTimer.start();
+
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
             }
 
+            int lastPosition = -1;
+            ProgressBar mProgressBar;
+            boolean rightScroll;
+            boolean leftScroll;
+            CountDownTimer mCountDownTimer;
+
             @Override
             public void onPageSelected(final int position) {
-                CountDownTimer mCountDownTimer = new CountDownTimer(1000, 10) {
-
-                    int i = position*33+1;
+                rightScroll = false;
+                leftScroll = false;
+                mProgressBar = findViewById(R.id.progressBar);
+                if (lastPosition > position) {
+                    leftScroll = true;
+                } else if (lastPosition < position) {
+                    mProgressBar.setProgress((position)*33+1);
+                    rightScroll = true;
+                }
+                mCountDownTimer = new CountDownTimer(1000, 10) {
                     @Override
                     public void onTick(long millisUntilFinished) {
-                        i++;
-                        mProgressBar.setProgress(Math.min(i, (position + 1) * 33 + 1));
+                        if (leftScroll) {
+                            mProgressBar.setProgress(Math.max(mProgressBar.getProgress()-1, (position+1)*33+1));
+                        } else if (rightScroll) {
+                            mProgressBar.setProgress(Math.min(mProgressBar.getProgress()+1, (position+1)*33+1));
+                        }
                     }
 
                     @Override
                     public void onFinish() {
+                        mProgressBar.setProgress((position + 1) * 33 + 1);
                         //Do what you want
 
                     }
                 };
                 mCountDownTimer.start();
+                lastPosition = position;
             }
 
             @Override
