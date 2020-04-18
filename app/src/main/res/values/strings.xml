@@ -13,7 +13,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="be_in_touch">Be in touch</string>
-    <string name="error_sign_in">UPS... coudn\'t Sign In</string>
+    <string name="error_sign_in">UPS… coudn\'t Sign In</string>
     <string name="error_sign_in2">Your username and password don\'t match.</string>
     <string name="error_sign_in3">Please, try again.</string>
     <string name="try_again">TRY AGAIN</string>
@@ -22,4 +22,24 @@
     <string name="networking">Networking</string>
     <string name="learn">Learn</string>
     <string name="title_activity_tutorial">TutorialActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_news">News</string>
+    <string name="menu_articles">Articles</string>
+    <string name="menu_events">Events</string>
+    <string name="menu_calendar">Calendar</string>
+    <string name="menu_profile">Profile</string>
+    <string name="menu_favorites">Favorites</string>
+    <string name="menu_bookmarks">Bookmarks</string>
+    <string name="menu_faq">FAQS</string>
+    <string name="menu_settings">Settings</string>
+
+    <string name="home_second">Home Second</string>
+    <string name="dev_community">Dev Community</string>
 </resources>

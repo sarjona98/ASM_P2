@@ -151,7 +151,7 @@ public class TutorialActivity extends FragmentActivity {
      * A simple pager adapter that represents 5 Tutorial1Fragment objects, in
      * sequence.
      */
-    public class ScreenSlidePagerAdapter extends FragmentPagerAdapter {
+    public static class ScreenSlidePagerAdapter extends FragmentPagerAdapter {
 
         ScreenSlidePagerAdapter(FragmentManager fm) {
             //noinspection deprecation
