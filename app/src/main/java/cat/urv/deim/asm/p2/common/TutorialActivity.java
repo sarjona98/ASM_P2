@@ -47,7 +47,7 @@ public class TutorialActivity extends FragmentActivity {
         initialProgressBar.setProgress(0);
         CountDownTimer initialCountDownTimer;
 
-        initialCountDownTimer = new CountDownTimer(1000, 10) {
+        initialCountDownTimer = new CountDownTimer(1500, 15) {
             @Override
             public void onTick(long millisUntilFinished) {
                 initialProgressBar.setProgress(Math.min(initialProgressBar.getProgress()+1, 34));
@@ -84,7 +84,7 @@ public class TutorialActivity extends FragmentActivity {
                     mProgressBar.setProgress((position)*33+1);
                     rightScroll = true;
                 }
-                mCountDownTimer = new CountDownTimer(1000, 10) {
+                mCountDownTimer = new CountDownTimer(1500, 15) {
                     @Override
                     public void onTick(long millisUntilFinished) {
                         if (leftScroll) {
