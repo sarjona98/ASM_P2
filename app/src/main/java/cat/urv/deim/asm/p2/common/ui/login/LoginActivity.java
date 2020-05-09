@@ -1,6 +1,7 @@
 package cat.urv.deim.asm.p2.common.ui.login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,8 +29,15 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (usernameEditText.getText().toString().equals("sandra.adams@email.com") && passwordEditText.getText().toString().equals("123456")) {
+                    SharedPreferences preferences =
+                            getSharedPreferences("PREFERENCES", MODE_PRIVATE);
+
+                    preferences.edit()
+                            .putBoolean("isLogged", true).apply();
+
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class); // redirecting to MainActivity.
                     startActivity(intent);
+                    finish();
                 } else {
                     Intent intent = new Intent(LoginActivity.this, ErrorLoginActivity.class); // redirecting to ErrorLoginActivity.
                     startActivity(intent);

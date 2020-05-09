@@ -21,6 +21,9 @@ public class SplashActivity extends Activity {
         final boolean isFirstRun = getSharedPreferences("PREFERENCES", MODE_PRIVATE)
                 .getBoolean("isFirstRun", true);
 
+        final boolean isLogged = getSharedPreferences("PREFERENCES", MODE_PRIVATE)
+                .getBoolean("isLogged", false);
+
         new Handler().postDelayed(new Runnable(){
             public void run(){
                 Intent intent;
@@ -28,7 +31,12 @@ public class SplashActivity extends Activity {
                     intent = new Intent(SplashActivity.this, TutorialActivity.class);
                 }
                 else {
-                    intent = new Intent(SplashActivity.this, LoginActivity.class);
+                    if (isLogged) {
+                        intent = new Intent(SplashActivity.this, MainActivity.class);
+                    }
+                    else {
+                        intent = new Intent(SplashActivity.this, LoginActivity.class);
+                    }
                 }
                 startActivity(intent);
                 finish();

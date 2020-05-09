@@ -23,6 +23,7 @@ public class ErrorLoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ErrorLoginActivity.this, LoginActivity.class); // redirecting to LoginActivity.
                 startActivity(intent);
+                finish();
             }
         });
     }
