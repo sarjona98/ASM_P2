@@ -9,6 +9,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -29,6 +30,19 @@ public class TutorialActivity extends FragmentActivity {
      * and next wizard steps.
      */
     private ViewPager mPager;
+
+    private void finishTutorial() {
+        SharedPreferences preferences =
+                getSharedPreferences("PREFERENCES", MODE_PRIVATE);
+
+        preferences.edit()
+                .putBoolean("isFirstRun", false).apply();
+
+        Intent intent = new Intent(TutorialActivity.this, LoginActivity.class);
+        startActivity(intent);
+
+        finish();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,16 +131,14 @@ public class TutorialActivity extends FragmentActivity {
         skip_tutorial1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TutorialActivity.this, LoginActivity.class); // redirecting to LoginActivity.
-                startActivity(intent);
+                finishTutorial();
             }
         });
 
         skip_tutorial2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TutorialActivity.this, LoginActivity.class); // redirecting to LoginActivity.
-                startActivity(intent);
+                finishTutorial();
             }
         });
 

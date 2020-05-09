@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.WindowManager;
+
+import cat.urv.deim.asm.p2.common.ui.login.LoginActivity;
 
 public class SplashActivity extends Activity {
 
@@ -15,9 +18,18 @@ public class SplashActivity extends Activity {
 
         setContentView(R.layout.activity_splash);
 
+        final boolean isFirstRun = getSharedPreferences("PREFERENCES", MODE_PRIVATE)
+                .getBoolean("isFirstRun", true);
+
         new Handler().postDelayed(new Runnable(){
             public void run(){
-                Intent intent = new Intent(SplashActivity.this, TutorialActivity.class);
+                Intent intent;
+                if (isFirstRun) {
+                    intent = new Intent(SplashActivity.this, TutorialActivity.class);
+                }
+                else {
+                    intent = new Intent(SplashActivity.this, LoginActivity.class);
+                }
                 startActivity(intent);
                 finish();
             }
