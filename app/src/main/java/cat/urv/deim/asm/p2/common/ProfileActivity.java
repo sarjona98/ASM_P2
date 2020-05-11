@@ -1,17 +1,12 @@
 package cat.urv.deim.asm.p2.common;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 
 import java.util.Objects;
-
-import cat.urv.deim.asm.p2.common.ui.login.LoginActivity;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -27,10 +22,9 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
-            case android.R.id.home:
-                finish();
-                return true;
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

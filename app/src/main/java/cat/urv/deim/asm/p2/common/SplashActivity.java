@@ -36,6 +36,7 @@ public class SplashActivity extends Activity {
                     }
                     else {
                         intent = new Intent(SplashActivity.this, LoginActivity.class);
+                        intent.putExtra("PARAMETER_BEHAVIOUR", "Login1");
                     }
                 }
                 startActivity(intent);

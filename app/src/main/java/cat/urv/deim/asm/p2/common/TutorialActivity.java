@@ -39,6 +39,7 @@ public class TutorialActivity extends FragmentActivity {
                 .putBoolean("isFirstRun", false).apply();
 
         Intent intent = new Intent(TutorialActivity.this, LoginActivity.class);
+        intent.putExtra("PARAMETER_BEHAVIOUR", "Login1");
         startActivity(intent);
 
         finish();

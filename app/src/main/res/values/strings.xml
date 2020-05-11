@@ -6,7 +6,8 @@
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
-    <string name="action_anonymously">CONTINUE ANONYMOUSLY</string>
+    <string name="action_anonymously">ANONYMOUSLY USER</string>
+    <string name="action_anonymously2">CONTINUE ANONYMOUSLY</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
@@ -42,4 +43,5 @@
     <string name="title_activity_profile">User Profile</string>
     <string name="sandra_adams">Sandra Adams</string>
     <string name="sandra_adams_email_com_email">sandra.adams@email.com</string>
+    <string name="string_search">search</string>
 </resources>

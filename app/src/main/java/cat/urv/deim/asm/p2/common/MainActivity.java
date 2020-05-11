@@ -2,6 +2,7 @@ package cat.urv.deim.asm.p2.common;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,8 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import cat.urv.deim.asm.p2.common.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,8 +50,16 @@ public class MainActivity extends AppCompatActivity {
                 int id=menuItem.getItemId();
                 //it's possible to do more actions on several items, if there is a large amount of items I prefer switch(){case} instead of if()
                 if (id==R.id.nav_profile){
-                    Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
-                    startActivity(intent);
+                    final boolean isLogged = getSharedPreferences("PREFERENCES", MODE_PRIVATE)
+                            .getBoolean("isLogged", false);
+                    if (isLogged) {
+                        Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                        intent.putExtra("PARAMETER_BEHAVIOUR", "Login2");
+                        startActivity(intent);
+                    }
                 }
 
                 //This is for maintaining the behavior of the Navigation view
@@ -74,4 +85,20 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+    /*@Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+        if (keyCode == KeyEvent.KEYCODE_BACK ) {
+            if (parameter.equals()) {
+                finish();
+                return true;
+            } else if (parameter.equals()) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class); // redirecting to LoginActivity.
+                intent.putExtra("PARAMETER_BEHAVIOUR", "Login2");
+                startActivity(intent);
+                return true;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
+    }*/
 }
