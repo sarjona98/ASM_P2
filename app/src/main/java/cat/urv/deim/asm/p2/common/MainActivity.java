@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_articles, R.id.nav_events)
+                R.id.nav_home, R.id.nav_news, R.id.nav_profile)
                 .setDrawerLayout(drawer)
                 .build();
         final NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
                     startActivity(intent);
                 }
+
                 //This is for maintaining the behavior of the Navigation view
                 NavigationUI.onNavDestinationSelected(menuItem, navController);
                 //This is for closing the drawer after acting on it
@@ -57,16 +58,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-        /*Button profile = findViewById(R.id.nav_profile);
-
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ProfileActivity.class); // redirecting to ProfileActivity.
-                startActivity(intent);
-            }
-        });*/
 
     }
 
