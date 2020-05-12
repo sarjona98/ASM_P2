@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ASM_P2</string>
+    <string name="todo">TODO</string>
+    <string name="description">logo</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Correu electrònic</string>
+    <string name="prompt_password">Contrasenya</string>
+    <string name="action_sign_in">Inicia sessió o registra\'t</string>
+    <string name="action_anonymously">USUARI ANÒNIM</string>
+    <string name="action_anonymously2">CONTINUA ANÒNIMAMENT</string>
+    <string name="action_sign_in_short">Inicia sessió</string>
+    <string name="welcome">"Benvingut!"</string>
+    <string name="invalid_username">Nom d\'usuari invàlid</string>
+    <string name="invalid_password">La contrasenya ha de ser >5 caràcters</string>
+    <string name="login_failed">"No s'ha pogut loguejar"</string>
+    <string name="be_in_touch">Mantingues el contacte</string>
+    <string name="error_sign_in">Vaja… No s\'ha pogut iniciar sessió</string>
+    <string name="error_sign_in2">L\'usuari i la contrasenya no coincideixen</string>
+    <string name="error_sign_in3">Si us plau, torna-ho a intentar.</string>
+    <string name="try_again">REINTENTA</string>
+    <string name="skip_tutorial">Saltar tutorial</string>
+    <string name="networking">Networking</string>
+    <string name="learn">Aprèn</string>
+    <string name="title_activity_tutorial">TutorialActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Obre el calaix de navegació</string>
+    <string name="navigation_drawer_close">Tanca el calaix de navegació</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Capçalera de navegació</string>
+    <string name="action_settings">Ajustaments</string>
+    <string name="menu_news">Notícies</string>
+    <string name="menu_articles">Articles</string>
+    <string name="menu_events">Events</string>
+    <string name="menu_calendar">Calendari</string>
+    <string name="menu_profile">Perfil</string>
+    <string name="menu_favorites">Favorits</string>
+    <string name="menu_bookmarks">Desats</string>
+    <string name="menu_faq">FAQS</string>
+    <string name="menu_settings">Ajustaments</string>
+    <string name="dev_community">Dev Community</string>
+    <string name="title_activity_profile">Perfil d\'usuari</string>
+    <string name="sandra_adams">Sandra Adams</string>
+    <string name="sandra_adams_email_com_email">sandra.adams@email.com</string>
+    <string name="string_search">Cerca</string>
+</resources>

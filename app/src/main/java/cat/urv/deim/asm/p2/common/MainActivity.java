@@ -29,11 +29,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        final boolean isLogged = getSharedPreferences("PREFERENCES", MODE_PRIVATE)
+                .getBoolean("isLogged", false);
+        NavigationView navigationView;
+        if (isLogged) {
+            setContentView(R.layout.activity_main);
+            navigationView = findViewById(R.id.nav_view);
+        } else {
+            setContentView(R.layout.activity_main_anonymous);
+            navigationView = findViewById(R.id.nav_view_anonymous);
+        }
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         final DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -43,23 +53,20 @@ public class MainActivity extends AppCompatActivity {
         final NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
+        navigationView.setCheckedItem(R.id.nav_news);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int id=menuItem.getItemId();
-                //it's possible to do more actions on several items, if there is a large amount of items I prefer switch(){case} instead of if()
-                if (id==R.id.nav_profile){
-                    final boolean isLogged = getSharedPreferences("PREFERENCES", MODE_PRIVATE)
-                            .getBoolean("isLogged", false);
-                    if (isLogged) {
-                        Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
-                        startActivity(intent);
-                    } else {
-                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                        intent.putExtra("PARAMETER_BEHAVIOUR", "Login2");
-                        startActivity(intent);
-                    }
+                if (id==R.id.nav_profile) {
+                        if (isLogged) {
+                            Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                            intent.putExtra("PARAMETER_BEHAVIOUR", "Login2");
+                            startActivity(intent);
+                        }
                 }
 
                 //This is for maintaining the behavior of the Navigation view
