@@ -2,7 +2,6 @@ package cat.urv.deim.asm.p2.common;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -36,6 +35,8 @@ public class ProfileActivity extends AppCompatActivity {
 
         if (item.getItemId() == android.R.id.home) {
             finish();
+            Intent intent = new Intent(ProfileActivity.this, MainActivity.class); // redirecting to MainActivity.
+            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -44,6 +45,7 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)  {
         if (keyCode == KeyEvent.KEYCODE_BACK ) {
+            finish();
             Intent intent = new Intent(ProfileActivity.this, MainActivity.class); // redirecting to MainActivity.
             startActivity(intent);
             return true;

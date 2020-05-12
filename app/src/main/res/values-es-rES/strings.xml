@@ -16,7 +16,7 @@
     <string name="login_failed">"No se ha podido loguear"</string>
     <string name="be_in_touch">Mantén el contacto</string>
     <string name="error_sign_in">Vaya… No se ha podido iniciar sesión</string>
-    <string name="error_sign_in2">El usuari y la contraseña no coinciden</string>
+    <string name="error_sign_in2">El usuario y la contraseña no coinciden</string>
     <string name="error_sign_in3">Por favor, vuelve a intentarlo.</string>
     <string name="try_again">REINTENTAR</string>
     <string name="skip_tutorial">Saltar tutorial</string>

@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         isLogged = getSharedPreferences("PREFERENCES", MODE_PRIVATE)
                 .getBoolean("isLogged", false);
-        NavigationView navigationView;
+        final NavigationView navigationView;
         if (isLogged) {
             setContentView(R.layout.activity_main);
             navigationView = findViewById(R.id.nav_view);
@@ -61,14 +61,15 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int id=menuItem.getItemId();
                 if (id==R.id.nav_profile) {
-                        if (isLogged) {
-                            Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                            intent.putExtra("PARAMETER_BEHAVIOUR", "Login2");
-                            startActivity(intent);
-                        }
+                    //navigationView.setCheckedItem(R.id.nav_news);
+                    if (isLogged) {
+                        Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                        intent.putExtra("PARAMETER_BEHAVIOUR", "Login2");
+                        startActivity(intent);
+                    }
                 }
 
                 //This is for maintaining the behavior of the Navigation view
@@ -100,8 +101,10 @@ public class MainActivity extends AppCompatActivity {
         if (keyCode == KeyEvent.KEYCODE_BACK ) {
             if (isLogged) {
                 finish();
+                System.exit(0);
                 return true;
             } else {
+                finish();
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class); // redirecting to LoginActivity.
                 intent.putExtra("PARAMETER_BEHAVIOUR", "Login2");
                 startActivity(intent);

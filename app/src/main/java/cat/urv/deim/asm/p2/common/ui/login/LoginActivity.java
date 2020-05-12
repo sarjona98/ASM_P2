@@ -95,8 +95,15 @@ public class LoginActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if (item.getItemId() == android.R.id.home) {
-            finish();
-            return true;
+            if (parameter.equals("Login1")) {
+                finish();
+                return true;
+            } else if (parameter.equals("Login2")) {
+                finish();
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class); // redirecting to MainActivity.
+                startActivity(intent);
+                return true;
+            }
         }
         return super.onOptionsItemSelected(item);
     }
