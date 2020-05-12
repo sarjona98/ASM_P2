@@ -1,9 +1,12 @@
 package cat.urv.deim.asm.p2.common;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import java.util.Objects;
@@ -17,6 +20,15 @@ public class ProfileActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("User Profile");
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem search = menu.findItem(R.id.action_search);
+        search.setVisible(false);
+        return true;
     }
 
     @Override

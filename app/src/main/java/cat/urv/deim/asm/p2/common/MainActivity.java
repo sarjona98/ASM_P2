@@ -25,11 +25,13 @@ import cat.urv.deim.asm.p2.common.ui.login.LoginActivity;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    private boolean isLogged;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final boolean isLogged = getSharedPreferences("PREFERENCES", MODE_PRIVATE)
+        isLogged = getSharedPreferences("PREFERENCES", MODE_PRIVATE)
                 .getBoolean("isLogged", false);
         NavigationView navigationView;
         if (isLogged) {
@@ -93,13 +95,13 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    /*@Override
+    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)  {
         if (keyCode == KeyEvent.KEYCODE_BACK ) {
-            if (parameter.equals()) {
+            if (isLogged) {
                 finish();
                 return true;
-            } else if (parameter.equals()) {
+            } else {
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class); // redirecting to LoginActivity.
                 intent.putExtra("PARAMETER_BEHAVIOUR", "Login2");
                 startActivity(intent);
@@ -107,5 +109,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return super.onKeyDown(keyCode, event);
-    }*/
+    }
 }
