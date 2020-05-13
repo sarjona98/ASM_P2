@@ -20,7 +20,7 @@
             android:screenOrientation="sensor"/>
         <activity
             android:name=".ErrorLoginActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar"
+            android:label="@string/title_error_login_activity"
             android:screenOrientation="sensor"/>
         <activity
             android:name=".ui.login.LoginActivity"

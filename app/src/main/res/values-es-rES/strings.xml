@@ -44,4 +44,5 @@
     <string name="sandra_adams">Sandra Adams</string>
     <string name="sandra_adams_email_com_email">sandra.adams@email.com</string>
     <string name="string_search">Buscar</string>
+    <string name="title_error_login_activity">ErrorLoginActivity</string>
 </resources>
