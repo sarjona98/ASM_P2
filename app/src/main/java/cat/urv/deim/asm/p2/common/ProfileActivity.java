@@ -17,7 +17,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("User Profile");
+        getSupportActionBar().setTitle(R.string.title_activity_profile);
 
     }
 

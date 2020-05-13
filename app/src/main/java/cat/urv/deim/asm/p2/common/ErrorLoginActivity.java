@@ -29,9 +29,6 @@ public class ErrorLoginActivity extends AppCompatActivity {
         try_againButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ErrorLoginActivity.this, LoginActivity.class); // redirecting to LoginActivity.
-                intent.putExtra("PARAMETER_BEHAVIOUR", "Login1");
-                startActivity(intent);
                 finish();
             }
         });
