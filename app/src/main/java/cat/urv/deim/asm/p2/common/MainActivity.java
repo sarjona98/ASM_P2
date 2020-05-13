@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 finish();
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class); // redirecting to LoginActivity.
-                intent.putExtra("PARAMETER_BEHAVIOUR", "Login2");
+                intent.putExtra("PARAMETER_BEHAVIOUR", "Login1");
                 startActivity(intent);
                 return true;
             }
