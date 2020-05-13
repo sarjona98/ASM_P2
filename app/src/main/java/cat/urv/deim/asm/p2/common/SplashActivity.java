@@ -24,6 +24,9 @@ public class SplashActivity extends Activity {
         final boolean isLogged = getSharedPreferences("PREFERENCES", MODE_PRIVATE)
                 .getBoolean("isLogged", false);
 
+        final boolean isAnonymous = getSharedPreferences("PREFERENCES", MODE_PRIVATE)
+                .getBoolean("isAnonymous", false);
+
         new Handler().postDelayed(new Runnable(){
             public void run(){
                 Intent intent;
@@ -31,7 +34,7 @@ public class SplashActivity extends Activity {
                     intent = new Intent(SplashActivity.this, TutorialActivity.class);
                 }
                 else {
-                    if (isLogged) {
+                    if (isLogged || isAnonymous) {
                         intent = new Intent(SplashActivity.this, MainActivity.class);
                     }
                     else {

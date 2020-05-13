@@ -74,8 +74,16 @@ public class LoginActivity extends AppCompatActivity {
         anonymousButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (parameter.equals("Login1")) {
+                    SharedPreferences preferences =
+                            getSharedPreferences("PREFERENCES", MODE_PRIVATE);
+
+                    preferences.edit()
+                            .putBoolean("isAnonymous", true).apply();
+                }
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class); // redirecting to MainActivity.
                 startActivity(intent);
+                finish();
             }
         });
     }
