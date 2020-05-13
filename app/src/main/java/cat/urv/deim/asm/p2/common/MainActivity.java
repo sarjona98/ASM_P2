@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -61,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int id=menuItem.getItemId();
                 if (id==R.id.nav_profile) {
-                    //navigationView.setCheckedItem(R.id.nav_news);
                     if (isLogged) {
                         Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
                         startActivity(intent);
@@ -99,16 +96,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)  {
         if (keyCode == KeyEvent.KEYCODE_BACK ) {
-            if (isLogged) {
-                finishAffinity();
-                return true;
-            } else {
-                finish();
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class); // redirecting to LoginActivity.
-                intent.putExtra("PARAMETER_BEHAVIOUR", "Login1");
-                startActivity(intent);
-                return true;
-            }
+            finishAffinity();
+            return true;
         }
         return super.onKeyDown(keyCode, event);
     }
