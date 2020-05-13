@@ -100,13 +100,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event)  {
         if (keyCode == KeyEvent.KEYCODE_BACK ) {
             if (isLogged) {
-                finish();
-                System.exit(0);
+                finishAffinity();
                 return true;
             } else {
                 finish();
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class); // redirecting to LoginActivity.
-                intent.putExtra("PARAMETER_BEHAVIOUR", "Login2");
+                intent.putExtra("PARAMETER_BEHAVIOUR", "Login1");
                 startActivity(intent);
                 return true;
             }

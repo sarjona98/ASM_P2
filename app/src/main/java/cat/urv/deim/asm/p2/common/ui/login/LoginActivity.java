@@ -112,7 +112,7 @@ public class LoginActivity extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event)  {
         if (keyCode == KeyEvent.KEYCODE_BACK ) {
             if (parameter.equals("Login1")) {
-                finish();
+                finishAffinity();
                 return true;
             } else if (parameter.equals("Login2")) {
                 finish();
