@@ -1,5 +1,6 @@
 package cat.urv.deim.asm.p3.shared;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import cat.urv.deim.asm.p2.common.R;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
 
@@ -23,8 +25,8 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
     // child data in format of header title, child title
     private HashMap<String, List<String>> listDataChild;
 
-    public ExpandableListViewAdapter(Context context, List<String> listDataGroup,
-                                     HashMap<String, List<String>> listChildData) {
+    ExpandableListViewAdapter(Context context, List<String> listDataGroup,
+                              HashMap<String, List<String>> listChildData) {
         this.context = context;
         this.listDataGroup = listDataGroup;
         this.listDataChild = listChildData;
@@ -32,7 +34,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int groupPosition, int childPosititon) {
-        return this.listDataChild.get(this.listDataGroup.get(groupPosition))
+        return Objects.requireNonNull(this.listDataChild.get(this.listDataGroup.get(groupPosition)))
                 .get(childPosititon);
     }
 
@@ -41,6 +43,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         return childPosition;
     }
 
+    @SuppressLint("InflateParams")
     @Override
     public View getChildView(int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
@@ -50,7 +53,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.list_child, null);
+            convertView = Objects.requireNonNull(layoutInflater).inflate(R.layout.list_child, null);
         }
 
         TextView textViewChild = convertView.findViewById(R.id.textViewChild);
@@ -61,7 +64,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return this.listDataChild.get(this.listDataGroup.get(groupPosition))
+        return Objects.requireNonNull(this.listDataChild.get(this.listDataGroup.get(groupPosition)))
                 .size();
     }
 
@@ -80,6 +83,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         return groupPosition;
     }
 
+    @SuppressLint("InflateParams")
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
@@ -87,7 +91,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.list_group, null);
+            convertView = Objects.requireNonNull(layoutInflater).inflate(R.layout.list_group, null);
         }
 
         TextView textViewGroup = convertView.findViewById(R.id.textViewGroup);

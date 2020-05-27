@@ -2,7 +2,9 @@ package cat.urv.deim.asm.p3.shared;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ExpandableListView;
@@ -14,6 +16,7 @@ import java.util.Objects;
 
 import cat.urv.deim.asm.libraries.commanagerdc.models.Faq;
 import cat.urv.deim.asm.libraries.commanagerdc.providers.DataProvider;
+import cat.urv.deim.asm.p2.common.MainActivity;
 import cat.urv.deim.asm.p2.common.R;
 
 public class FAQsActivity extends AppCompatActivity {
@@ -39,7 +42,7 @@ public class FAQsActivity extends AppCompatActivity {
 
     private void showFaq() {
         listGroup = new ArrayList<>();
-        listItem = new HashMap<String,List<String>>();
+        listItem = new HashMap<>();
 
         DataProvider dataProviderFaqs = DataProvider.getInstance(this);
         List<Faq> faqsList = dataProviderFaqs.getFaqs();
@@ -68,8 +71,21 @@ public class FAQsActivity extends AppCompatActivity {
 
         if (item.getItemId() == android.R.id.home) {
             finish();
+            Intent intent = new Intent(FAQsActivity.this, MainActivity.class); // redirecting to MainActivity.
+            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+        if (keyCode == KeyEvent.KEYCODE_BACK ) {
+            finish();
+            Intent intent = new Intent(FAQsActivity.this, MainActivity.class); // redirecting to MainActivity.
+            startActivity(intent);
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
