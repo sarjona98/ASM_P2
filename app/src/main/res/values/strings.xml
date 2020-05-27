@@ -45,4 +45,10 @@
     <string name="string_search">search</string>
     <string name="title_error_login_activity">ErrorLoginActivity</string>
     <string name="title_faqs_activity">FAQS</string>
+
+    <string name="pregunta1" translatable="false">Pregunta1</string>
+    <string name="pregunta2" translatable="false">Pregunta2</string>
+    <string name="pregunta3" translatable="false">Pregunta3</string>
+    <string name="pregunta4" translatable="false">Pregunta4</string>
+
 </resources>

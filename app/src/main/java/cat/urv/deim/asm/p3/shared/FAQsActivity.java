@@ -5,12 +5,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ExpandableListView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
+import cat.urv.deim.asm.libraries.commanagerdc.models.Faq;
+import cat.urv.deim.asm.libraries.commanagerdc.providers.DataProvider;
 import cat.urv.deim.asm.p2.common.R;
 
 public class FAQsActivity extends AppCompatActivity {
+
+    private ExpandableListView expandableListView;
+    private ExpandableListViewAdapter expandableListViewAdapter;
+    private List<String> listGroup;
+    private HashMap<String, List<String>> listItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +29,29 @@ public class FAQsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_faqs);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.title_faqs_activity);
+
+        expandableListView = findViewById(R.id.faqExp);
+        showFaq();
+
+        expandableListViewAdapter = new ExpandableListViewAdapter(this, listGroup, listItem);
+        expandableListView.setAdapter(expandableListViewAdapter);
+    }
+
+    private void showFaq() {
+        listGroup = new ArrayList<>();
+        listItem = new HashMap<String,List<String>>();
+
+        DataProvider dataProviderFaqs = DataProvider.getInstance(this);
+        List<Faq> faqsList = dataProviderFaqs.getFaqs();
+        for (int count_faq = 0; count_faq < faqsList.size(); count_faq++) {
+            String pregunta = faqsList.get(count_faq).getTitle();
+            listGroup.add(pregunta);
+            List<String> resp_list = new ArrayList<>();
+            String resposta = faqsList.get(count_faq).getBody();
+            resp_list.add(resposta);
+            listItem.put(listGroup.get(count_faq), resp_list);
+        }
+
     }
 
     @Override

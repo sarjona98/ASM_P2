@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -19,8 +21,6 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-//import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
         DataProvider dataProvider = DataProvider.getInstance(this);
         int articleIndex = 0;
         String imageURL = dataProvider.getArticles().get(articleIndex).getImageURL();
-        //Picasso.get().load(imageURL).placeholder(R.drawable.ic_launcher_background).into(view);
+        Picasso.get().load(imageURL).placeholder(R.drawable.ic_launcher_background).into(view);
 
 
     }
