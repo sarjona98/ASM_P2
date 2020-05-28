@@ -46,4 +46,5 @@
     <string name="string_search">Buscar</string>
     <string name="title_error_login_activity">ErrorLoginActivity</string>
     <string name="title_faqs_activity">FAQS</string>
+    <string name="articlesfragment">ArticlesFragment</string>
 </resources>

@@ -14,6 +14,9 @@ import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -34,11 +37,13 @@ import cat.urv.deim.asm.libraries.commanagerdc.models.New;
 import cat.urv.deim.asm.libraries.commanagerdc.models.Tag;
 import cat.urv.deim.asm.libraries.commanagerdc.providers.DataProvider;
 import cat.urv.deim.asm.p2.common.ui.login.LoginActivity;
+import cat.urv.deim.asm.p3.shared.ArticlesFragment;
 import cat.urv.deim.asm.p3.shared.FAQsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
+    private static androidx.fragment.app.Fragment actualFrag;
 
     private AppBarConfiguration mAppBarConfiguration;
     private boolean isLogged;
@@ -55,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
         List<? extends List> dataLists = new LinkedList<>();
         try {
-            Object dataArray[]= {
+            Object[] dataArray = {
                     dataProvider.getFaqs(),
                     dataProvider.getNews(),
                     dataProvider.getArticles(),
@@ -104,8 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_news, R.id.nav_profile)
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home, R.id.nav_news, R.id.nav_articles, R.id.nav_profile)
                 .setDrawerLayout(drawer)
                 .build();
         final NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -130,9 +134,17 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_faq:
                         Intent intent = new Intent (MainActivity.this, FAQsActivity.class);
                         startActivity(intent);
+                        break;
+                    case R.id.nav_articles:
+                        actualFrag = new ArticlesFragment();
+                        FragmentManager manager = getSupportFragmentManager();
+                        FragmentTransaction transaction = manager.beginTransaction();
+                        transaction.replace(R.id.nav_host_fragment, actualFrag);
+                        transaction.addToBackStack(null);
+                        transaction.commit();
+                        break;
                 }
-
-
+                getSupportActionBar().setTitle(menuItem.getTitle());
                 //This is for maintaining the behavior of the Navigation view
                 NavigationUI.onNavDestinationSelected(menuItem, navController);
                 //This is for closing the drawer after acting on it
