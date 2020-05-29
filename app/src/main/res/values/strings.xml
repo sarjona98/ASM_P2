@@ -47,8 +47,8 @@
     <string name="title_faqs_activity">FAQS</string>
 
     <string name="articlesfragment">ArticlesFragment</string>
-    <string name="article_title" translatable="false">WTM Tarragona 2020</string>
-    <string name="article_description_text" translatable="false">Secondary line text Lorem ipsum dolor sit amet</string>
-    <string name="article_date_text" translatable="false">Reus, 1 May 2020</string>
+    <string name="article_title" translatable="false">Problemas con NavGraph</string>
+    <string name="article_description_text" translatable="false">Secondary line text Lorem</string>
+    <string name="article_author_text" translatable="false">Tomas</string>
 
 </resources>
