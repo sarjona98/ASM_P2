@@ -2,27 +2,25 @@ package cat.urv.deim.asm.p3.shared;
 
 import androidx.lifecycle.ViewModelProviders;
 
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
-import android.widget.ToggleButton;
+import android.widget.ImageView;
 
 import cat.urv.deim.asm.p2.common.R;
 
 public class ArticlesFragment extends Fragment {
 
     private ArticlesViewModel mViewModel;
+    private static boolean fav = false;
+    private static boolean bookmark = false;
 
-    public static ArticlesFragment newInstance() {
+    static ArticlesFragment newInstance() {
         return new ArticlesFragment();
     }
 
@@ -31,23 +29,29 @@ public class ArticlesFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         final View articlesView = inflater.inflate(R.layout.articles_fragment, container, false);
-        final ToggleButton favToggle = articlesView.findViewById(R.id.fav_toggleButton);
-        final ToggleButton bookmarkToggle = articlesView.findViewById(R.id.bookmark_toggleButton);
-        favToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    favToggle.setBackgroundResource(R.drawable.outline_favorite_border_24);
+        final ImageView favArticle = articlesView.findViewById(R.id.fav_toggleButton);
+        final ImageView bookmarkArticle = articlesView.findViewById(R.id.bookmark_toggleButton);
+        favArticle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (fav) {
+                    favArticle.setBackgroundResource(R.drawable.outline_favorite_border_24);
+                    fav = false;
                 } else {
-                    favToggle.setBackgroundResource(R.drawable.baseline_favorite_24);
+                    favArticle.setBackgroundResource(R.drawable.baseline_favorite_24);
+                    fav = true;
                 }
             }
         });
-        bookmarkToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    bookmarkToggle.setBackgroundResource(R.drawable.outline_bookmark_border_24);
+        bookmarkArticle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (bookmark) {
+                    bookmarkArticle.setBackgroundResource(R.drawable.outline_bookmark_border_24);
+                    bookmark = false;
                 } else {
-                     bookmarkToggle.setBackgroundResource(R.drawable.outline_bookmark_24);
+                    bookmarkArticle.setBackgroundResource(R.drawable.outline_bookmark_24);
+                    bookmark = true;
                 }
             }
         });
