@@ -2,7 +2,6 @@ package cat.urv.deim.asm.p2.common;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -11,8 +10,6 @@ import android.view.View;
 import android.widget.Button;
 
 import java.util.Objects;
-
-import cat.urv.deim.asm.p2.common.ui.login.LoginActivity;
 
 public class ErrorLoginActivity extends AppCompatActivity {
 

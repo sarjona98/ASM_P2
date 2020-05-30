@@ -63,7 +63,6 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
                 }
             });
         }
-
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)

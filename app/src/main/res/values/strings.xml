@@ -50,5 +50,7 @@
     <string name="article_title" translatable="false">Problemas con NavGraph</string>
     <string name="article_description_text" translatable="false">Secondary line text Lorem</string>
     <string name="article_author_text" translatable="false">Tomas</string>
+    <string name="article_tags" translatable="false">Android Jetpack</string>
+    <string name="title_activity_article_detail">Article Detail</string>
 
 </resources>
