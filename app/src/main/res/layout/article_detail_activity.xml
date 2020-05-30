@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/iVProfile"
+            android:id="@+id/imageArticleDetail"
             android:layout_width="413dp"
             android:layout_height="227dp"
             android:contentDescription="@string/description"
@@ -27,14 +27,16 @@
 
             <TextView
                 android:id="@+id/titleArticleDetail"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="15dp"
                 android:contentDescription="@string/description"
                 android:text="@string/article_title"
                 android:textColor="@android:color/black"
                 android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -59,13 +61,15 @@
 
             <TextView
                 android:id="@+id/descriptionArticleDetail"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="50dp"
+                android:layout_marginEnd="15dp"
                 android:text="@string/article_description_text"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/start_line" />
 

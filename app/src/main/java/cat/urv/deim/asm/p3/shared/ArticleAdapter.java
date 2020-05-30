@@ -19,22 +19,33 @@ import cat.urv.deim.asm.p2.common.R;
 
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder> {
     private List<Article> list;
+    private OnArticleListener mOnArticleListenes;
+
+    // Provide a suitable constructor (depends on the kind of dataset)
+    public ArticleAdapter(List<Article> listArticle, OnArticleListener onArticleListener) {
+        this.list = listArticle;
+        this.mOnArticleListenes = onArticleListener;
+    }
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
-    static class ArticleViewHolder extends RecyclerView.ViewHolder {
+    static class ArticleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         // each data item has a title, a description, a author (all three TextView's) and a image (ImageView) in this case
         TextView title, description, author;
         ImageView image, favArticle, bookmarkArticle;
+        OnArticleListener onArticleListener;
         boolean fav = false;
         boolean bookmark = false;
-        ArticleViewHolder(CardView articleCard) {
+        ArticleViewHolder(CardView articleCard, OnArticleListener onArticleListener) {
             super(articleCard);
             title = articleCard.findViewById(R.id.titleArticle);
             description = articleCard.findViewById(R.id.descriptionArticle);
             author = articleCard.findViewById(R.id.authorArticle);
             image = articleCard.findViewById(R.id.imageArticle);
+            this.onArticleListener = onArticleListener;
+
+            articleCard.setOnClickListener(this);
 
             favArticle = articleCard.findViewById(R.id.fav_toggleButton);
             bookmarkArticle = articleCard.findViewById(R.id.bookmark_toggleButton);
@@ -63,11 +74,11 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
                 }
             });
         }
-    }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
-    ArticleAdapter(List<Article> listArticle) {
-        list = listArticle;
+        @Override
+        public void onClick(View v) {
+            onArticleListener.onArticleClick(getAdapterPosition());
+        }
     }
 
     // Create new views (invoked by the layout manager)
@@ -78,7 +89,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         // create a new view
         CardView c = (CardView) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.article_card, parent, false);
-        return new ArticleViewHolder(c);
+        return new ArticleViewHolder(c, mOnArticleListenes);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
@@ -96,5 +107,9 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    public interface OnArticleListener {
+        void onArticleClick(int position);
     }
 }

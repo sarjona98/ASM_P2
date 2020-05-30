@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +18,7 @@ import cat.urv.deim.asm.libraries.commanagerdc.models.Article;
 import cat.urv.deim.asm.libraries.commanagerdc.providers.DataProvider;
 import cat.urv.deim.asm.p2.common.R;
 
-public class ArticlesFragment extends Fragment {
+public class ArticlesFragment extends Fragment implements ArticleAdapter.OnArticleListener {
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -47,9 +48,17 @@ public class ArticlesFragment extends Fragment {
         // specify an adapter (see also next example)
         DataProvider dataProvider = DataProvider.getInstance(getActivity());
         articlesList = dataProvider.getArticles();
-        mAdapter = new ArticleAdapter(articlesList);
+        mAdapter = new ArticleAdapter(articlesList, this);
         recyclerView.setAdapter(mAdapter);
 
         return articlesView;
+    }
+
+    @Override
+    public void onArticleClick(int position) {
+        articlesList.get(position);
+        Intent intent = new Intent(this.getActivity(), ArticleDetailActivity.class);
+        intent.putExtra("ARTICLE_POSITION", position);
+        startActivity(intent);
     }
 }
