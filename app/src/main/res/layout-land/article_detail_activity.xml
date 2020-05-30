@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,7 +17,7 @@
 
             <ImageView
                 android:id="@+id/imageArticleDetail"
-                android:layout_width="413dp"
+                android:layout_width="match_parent"
                 android:layout_height="227dp"
                 android:contentDescription="@string/description"
                 app:srcCompat="@drawable/sandra_adams" />
@@ -79,7 +80,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="50dp"
+                    android:layout_marginBottom="15dp"
                     android:background="@android:color/darker_gray"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/descriptionArticleDetail" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

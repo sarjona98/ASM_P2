@@ -16,7 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="cat.urv.deim.asm.p3.shared.ArticleDetailActivity" />
+        <activity
+            android:name="cat.urv.deim.asm.p3.shared.ArticleDetailActivity"
+            android:label="@string/title_activity_article_detail"
+            android:screenOrientation="sensor" />
         <activity
             android:name="cat.urv.deim.asm.p3.shared.FAQsActivity"
             android:label="@string/title_faqs_activity"

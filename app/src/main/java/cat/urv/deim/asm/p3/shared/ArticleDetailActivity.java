@@ -14,12 +14,15 @@ import java.util.List;
 import java.util.Objects;
 
 import cat.urv.deim.asm.libraries.commanagerdc.models.Article;
+import cat.urv.deim.asm.libraries.commanagerdc.models.Tag;
 import cat.urv.deim.asm.libraries.commanagerdc.providers.DataProvider;
 import cat.urv.deim.asm.p2.common.R;
 
 public class ArticleDetailActivity extends AppCompatActivity {
 
     static int position_parameter;
+    StringBuilder tagsText;
+    int count_tags;
     TextView title, description, tags;
     ImageView image;
 
@@ -41,7 +44,16 @@ public class ArticleDetailActivity extends AppCompatActivity {
 
         title.setText(articlesList.get(position_parameter).getTitle());
         description.setText(articlesList.get(position_parameter).getDescription());
-        tags.setText((CharSequence) articlesList.get(position_parameter).getTags());
+        tagsText = new StringBuilder();
+        count_tags = 0;
+        for (Tag tag: articlesList.get(position_parameter).getTags()){
+            if (count_tags > 0) {
+                tagsText.append(" ");
+            }
+            tagsText.append(tag.getName());
+            count_tags++;
+        }
+        tags.setText(tagsText);
         Picasso.get().load(articlesList.get(position_parameter).getImageURL()).into(image);
     }
 
