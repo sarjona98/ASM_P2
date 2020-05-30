@@ -13,11 +13,11 @@ public class HomeViewModel extends ViewModel {
     public HomeViewModel() {
         mText = new MutableLiveData<>();
         if (Locale.getDefault().getLanguage().equals("es")){
-            mText.setValue("Esta es la página de noticias");
+            mText.setValue("Esta es la página por defecto");
         } else if (Locale.getDefault().getLanguage().equals("ca")) {
-            mText.setValue("Aquesta és la pàgina de notícies");
+            mText.setValue("Aquesta és la pàgina per defecte");
         } else {
-            mText.setValue("This is News page");
+            mText.setValue("This is Default page");
         }
     }
 

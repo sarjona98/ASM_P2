@@ -28,6 +28,7 @@ import androidx.appcompat.widget.Toolbar;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 import cat.urv.deim.asm.libraries.commanagerdc.models.Article;
 import cat.urv.deim.asm.libraries.commanagerdc.models.CalendarItem;
@@ -36,6 +37,7 @@ import cat.urv.deim.asm.libraries.commanagerdc.models.Faq;
 import cat.urv.deim.asm.libraries.commanagerdc.models.New;
 import cat.urv.deim.asm.libraries.commanagerdc.models.Tag;
 import cat.urv.deim.asm.libraries.commanagerdc.providers.DataProvider;
+import cat.urv.deim.asm.p2.common.ui.home.HomeFragment;
 import cat.urv.deim.asm.p2.common.ui.login.LoginActivity;
 import cat.urv.deim.asm.p3.shared.ArticlesFragment;
 import cat.urv.deim.asm.p3.shared.FAQsActivity;
@@ -120,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int id=menuItem.getItemId();
+                FragmentManager manager;
+                FragmentTransaction transaction;
                 switch (id) {
                     case R.id.nav_profile:
                         if (isLogged) {
@@ -137,14 +141,23 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.nav_articles:
                         actualFrag = new ArticlesFragment();
-                        FragmentManager manager = getSupportFragmentManager();
-                        FragmentTransaction transaction = manager.beginTransaction();
+                        manager = getSupportFragmentManager();
+                        transaction = manager.beginTransaction();
+                        transaction.replace(R.id.nav_host_fragment, actualFrag);
+                        transaction.addToBackStack(null);
+                        transaction.commit();
+                        break;
+                    default:
+                        // In other case go to default fragment
+                        actualFrag = new HomeFragment();
+                        manager = getSupportFragmentManager();
+                        transaction = manager.beginTransaction();
                         transaction.replace(R.id.nav_host_fragment, actualFrag);
                         transaction.addToBackStack(null);
                         transaction.commit();
                         break;
                 }
-                getSupportActionBar().setTitle(menuItem.getTitle());
+                Objects.requireNonNull(getSupportActionBar()).setTitle(menuItem.getTitle());
                 //This is for maintaining the behavior of the Navigation view
                 NavigationUI.onNavDestinationSelected(menuItem, navController);
                 //This is for closing the drawer after acting on it
@@ -176,12 +189,6 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onKeyDown(keyCode, event);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        //showImage((ImageView)findViewById(R.id.detail_image_view));
     }
 
     protected void showImage(ImageView view){
