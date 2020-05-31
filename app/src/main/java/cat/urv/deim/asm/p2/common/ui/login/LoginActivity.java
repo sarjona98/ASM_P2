@@ -24,6 +24,15 @@ import cat.urv.deim.asm.p2.common.R;
 public class LoginActivity extends AppCompatActivity {
 
     String parameter;
+    public static final String LOGIN_INITIAL = "login_initial";
+    public static final String LOGIN_INSIDER = "login_insider";
+    private static final String USERNAME = "sandra.adams@email.com";
+    private static final String PASSWORD = "123456";
+    public static final String EXTRA_NAME = "PARAMETER_BEHAVIOUR";
+    public static final String PREFERENCE_NAME = "PREFERENCES";
+    public static final String NOT_SUPPORTED = "NOT_SUPPORTED";
+    public static final String IS_LOGGED = "isLogged";
+    public static final String IS_ANONYMOUS = "isAnonymous";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,16 +45,16 @@ public class LoginActivity extends AppCompatActivity {
         final Button anonymousButton = findViewById(R.id.anonymous);
 
         try {
-            parameter = getIntent().getStringExtra("PARAMETER_BEHAVIOUR");
+            parameter = getIntent().getStringExtra(EXTRA_NAME);
         } catch (Exception e) {
-            parameter = "NOT_SUPPORTED";
+            parameter = NOT_SUPPORTED;
         }
 
         assert parameter != null;
-        if (parameter.equals("Login1")) {
+        if (parameter.equals(LOGIN_INITIAL)) {
             anonymousButton.setText(R.string.action_anonymously);
             Objects.requireNonNull(getSupportActionBar()).hide();
-        } else if (parameter.equals("Login2")) {
+        } else if (parameter.equals(LOGIN_INSIDER)) {
             anonymousButton.setText(R.string.action_anonymously2);
             Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle("");
@@ -54,12 +63,12 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (usernameEditText.getText().toString().equals("sandra.adams@email.com") && passwordEditText.getText().toString().equals("123456")) {
+                if (usernameEditText.getText().toString().equals(USERNAME) && passwordEditText.getText().toString().equals(PASSWORD)) {
                     SharedPreferences preferences =
-                            getSharedPreferences("PREFERENCES", MODE_PRIVATE);
+                            getSharedPreferences(PREFERENCE_NAME, MODE_PRIVATE);
 
                     preferences.edit()
-                            .putBoolean("isLogged", true).apply();
+                            .putBoolean(IS_LOGGED, true).apply();
 
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class); // redirecting to MainActivity.
                     startActivity(intent);
@@ -74,12 +83,12 @@ public class LoginActivity extends AppCompatActivity {
         anonymousButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (parameter.equals("Login1")) {
+                if (parameter.equals(LOGIN_INITIAL)) {
                     SharedPreferences preferences =
-                            getSharedPreferences("PREFERENCES", MODE_PRIVATE);
+                            getSharedPreferences(PREFERENCE_NAME, MODE_PRIVATE);
 
                     preferences.edit()
-                            .putBoolean("isAnonymous", true).apply();
+                            .putBoolean(IS_ANONYMOUS, true).apply();
                 }
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class); // redirecting to MainActivity.
                 startActivity(intent);
@@ -90,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (parameter.equals("Login2")) {
+        if (parameter.equals(LOGIN_INSIDER)) {
             // Inflate the menu; this adds items to the action bar if it is present.
             getMenuInflater().inflate(R.menu.main, menu);
             MenuItem search = menu.findItem(R.id.action_search);
@@ -103,10 +112,10 @@ public class LoginActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if (item.getItemId() == android.R.id.home) {
-            if (parameter.equals("Login1")) {
+            if (parameter.equals(LOGIN_INITIAL)) {
                 finish();
                 return true;
-            } else if (parameter.equals("Login2")) {
+            } else if (parameter.equals(LOGIN_INSIDER)) {
                 finish();
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class); // redirecting to MainActivity.
                 startActivity(intent);
@@ -119,10 +128,10 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)  {
         if (keyCode == KeyEvent.KEYCODE_BACK ) {
-            if (parameter.equals("Login1")) {
+            if (parameter.equals(LOGIN_INITIAL)) {
                 finishAffinity();
                 return true;
-            } else if (parameter.equals("Login2")) {
+            } else if (parameter.equals(LOGIN_INSIDER)) {
                 finish();
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class); // redirecting to MainActivity.
                 startActivity(intent);

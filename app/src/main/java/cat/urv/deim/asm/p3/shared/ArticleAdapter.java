@@ -19,12 +19,12 @@ import cat.urv.deim.asm.p2.common.R;
 
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder> {
     private List<Article> list;
-    private OnArticleListener mOnArticleListenes;
+    private OnArticleListener mOnArticleListener;
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public ArticleAdapter(List<Article> listArticle, OnArticleListener onArticleListener) {
+    ArticleAdapter(List<Article> listArticle, OnArticleListener onArticleListener) {
         this.list = listArticle;
-        this.mOnArticleListenes = onArticleListener;
+        this.mOnArticleListener = onArticleListener;
     }
 
     // Provide a reference to the views for each data item
@@ -89,7 +89,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         // create a new view
         CardView c = (CardView) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.article_card, parent, false);
-        return new ArticleViewHolder(c, mOnArticleListenes);
+        return new ArticleViewHolder(c, mOnArticleListener);
     }
 
     // Replace the contents of a view (invoked by the layout manager)

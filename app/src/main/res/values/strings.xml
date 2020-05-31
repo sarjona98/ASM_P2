@@ -52,5 +52,7 @@
     <string name="article_author_text" translatable="false">Tomas</string>
     <string name="article_tags" translatable="false">Android Jetpack</string>
     <string name="title_activity_article_detail">Article Detail</string>
+    <string name="action_fav">action_fav</string>
+    <string name="action_bookmark">action_bookmark</string>
 
 </resources>

@@ -3,4 +3,9 @@
     <color name="colorPrimary">#54B9CF</color>
     <color name="colorPrimaryDark">#489DB0</color>
     <color name="colorAccent">#54B9CF</color>
+    <color name="colorProgressbar">#6200EE</color>
+    <color name="colorProgressbarBackground">#757575</color>
+    <color name="colorDarkGreyText">#6C6464</color>
+    <color name="colorLightGreyText">#A59292</color>
+    <color name="colorWhite">#FFFFFF</color>
 </resources>

@@ -1,8 +1,11 @@
 package cat.urv.deim.asm.p3.shared;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,7 +27,9 @@ public class ArticleDetailActivity extends AppCompatActivity {
     StringBuilder tagsText;
     int count_tags;
     TextView title, description, tags;
-    ImageView image;
+    ImageView image, favArticle, bookmarkArticle;
+    boolean fav=false, bookmark=false;
+    public static final String EXTRA_ARTICLE_POSITION = "ARTICLE_POSITION";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +38,7 @@ public class ArticleDetailActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.title_activity_article_detail);
 
-        position_parameter = Objects.requireNonNull(getIntent().getExtras()).getInt("ARTICLE_POSITION");
+        position_parameter = Objects.requireNonNull(getIntent().getExtras()).getInt(EXTRA_ARTICLE_POSITION);
         DataProvider dataProviderArticles = DataProvider.getInstance(this);
         List<Article> articlesList = dataProviderArticles.getArticles();
 
@@ -41,6 +46,8 @@ public class ArticleDetailActivity extends AppCompatActivity {
         description = findViewById(R.id.descriptionArticleDetail);
         tags = findViewById(R.id.tagsArticleDetail);
         image = findViewById(R.id.imageArticleDetail);
+        favArticle = findViewById(R.id.fav_toggleButton);
+        bookmarkArticle = findViewById(R.id.bookmark_toggleButton);
 
         title.setText(articlesList.get(position_parameter).getTitle());
         description.setText(articlesList.get(position_parameter).getDescription());
@@ -58,13 +65,19 @@ public class ArticleDetailActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_activity_article_detail, menu);
+        return true;
+    }
 
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) finish();
+
+        return (super.onOptionsItemSelected(item));
     }
 
     @Override

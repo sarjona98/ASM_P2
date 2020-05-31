@@ -25,6 +25,10 @@ public class TutorialActivity extends FragmentActivity {
      * The number of pages (wizard steps) to show in this demo.
      */
     private static final int NUM_PAGES = 3;
+    public static final String LOGIN_INITIAL = "login_initial";
+    public static final String EXTRA_NAME = "PARAMETER_BEHAVIOUR";
+    public static final String PREFERENCE_NAME = "PREFERENCES";
+    public static final String IS_FIRST_RUN = "isFirstRun";
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -34,13 +38,13 @@ public class TutorialActivity extends FragmentActivity {
 
     private void finishTutorial() {
         SharedPreferences preferences =
-                getSharedPreferences("PREFERENCES", MODE_PRIVATE);
+                getSharedPreferences(PREFERENCE_NAME, MODE_PRIVATE);
 
         preferences.edit()
-                .putBoolean("isFirstRun", false).apply();
+                .putBoolean(IS_FIRST_RUN, false).apply();
 
         Intent intent = new Intent(TutorialActivity.this, LoginActivity.class);
-        intent.putExtra("PARAMETER_BEHAVIOUR", "Login1");
+        intent.putExtra(EXTRA_NAME, LOGIN_INITIAL);
         startActivity(intent);
 
         finish();

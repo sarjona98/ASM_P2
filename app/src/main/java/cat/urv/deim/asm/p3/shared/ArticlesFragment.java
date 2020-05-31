@@ -24,6 +24,7 @@ public class ArticlesFragment extends Fragment implements ArticleAdapter.OnArtic
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private List<Article> articlesList;
+    private static final String EXTRA_ARTICLE_POSITION = "ARTICLE_POSITION";
 
     static ArticlesFragment newInstance() {
         return new ArticlesFragment();
@@ -56,9 +57,8 @@ public class ArticlesFragment extends Fragment implements ArticleAdapter.OnArtic
 
     @Override
     public void onArticleClick(int position) {
-        articlesList.get(position);
         Intent intent = new Intent(this.getActivity(), ArticleDetailActivity.class);
-        intent.putExtra("ARTICLE_POSITION", position);
+        intent.putExtra(EXTRA_ARTICLE_POSITION, position);
         startActivity(intent);
     }
 }

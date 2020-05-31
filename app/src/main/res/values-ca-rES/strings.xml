@@ -48,4 +48,6 @@
     <string name="title_faqs_activity">FAQS</string>
     <string name="articlesfragment">ArticlesFragment</string>
     <string name="title_activity_article_detail">Article Detallat</string>
+    <string name="action_fav">action_fav</string>
+    <string name="action_bookmark">action_bookmark</string>
 </resources>

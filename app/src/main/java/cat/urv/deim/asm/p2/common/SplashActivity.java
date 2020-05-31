@@ -10,6 +10,14 @@ import cat.urv.deim.asm.p2.common.ui.login.LoginActivity;
 
 public class SplashActivity extends Activity {
 
+    public static final String IS_LOGGED = "isLogged";
+    public static final String IS_ANONYMOUS = "isAnonymous";
+    public static final String IS_FIRST_RUN = "isFirstRun";
+    public static final String LOGIN_INITIAL = "login_initial";
+    public static final String EXTRA_NAME = "PARAMETER_BEHAVIOUR";
+    public static final String PREFERENCE_NAME = "PREFERENCES";
+    public static final int DELAY_MS = 2000;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,14 +25,14 @@ public class SplashActivity extends Activity {
 
         setContentView(R.layout.activity_splash);
 
-        final boolean isFirstRun = getSharedPreferences("PREFERENCES", MODE_PRIVATE)
-                .getBoolean("isFirstRun", true);
+        final boolean isFirstRun = getSharedPreferences(PREFERENCE_NAME, MODE_PRIVATE)
+                .getBoolean(IS_FIRST_RUN, true);
 
-        final boolean isLogged = getSharedPreferences("PREFERENCES", MODE_PRIVATE)
-                .getBoolean("isLogged", false);
+        final boolean isLogged = getSharedPreferences(PREFERENCE_NAME, MODE_PRIVATE)
+                .getBoolean(IS_LOGGED, false);
 
-        final boolean isAnonymous = getSharedPreferences("PREFERENCES", MODE_PRIVATE)
-                .getBoolean("isAnonymous", false);
+        final boolean isAnonymous = getSharedPreferences(PREFERENCE_NAME, MODE_PRIVATE)
+                .getBoolean(IS_ANONYMOUS, false);
 
         new Handler().postDelayed(new Runnable(){
             public void run(){
@@ -38,12 +46,12 @@ public class SplashActivity extends Activity {
                     }
                     else {
                         intent = new Intent(SplashActivity.this, LoginActivity.class);
-                        intent.putExtra("PARAMETER_BEHAVIOUR", "Login1");
+                        intent.putExtra(EXTRA_NAME, LOGIN_INITIAL);
                     }
                 }
                 startActivity(intent);
                 finish();
             }
-        }, 2000);
+        }, DELAY_MS);
     }
 }

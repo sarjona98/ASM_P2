@@ -43,6 +43,11 @@ import cat.urv.deim.asm.p3.shared.FAQsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String LOGIN_INSIDER = "login_insider";
+    public static final String EXTRA_NAME = "PARAMETER_BEHAVIOUR";
+    public static final String PREFERENCE_NAME = "PREFERENCES";
+    public static final String IS_LOGGED = "isLogged";
+
     private static final String TAG = MainActivity.class.getSimpleName();
     private static androidx.fragment.app.Fragment actualFrag;
 
@@ -93,8 +98,8 @@ public class MainActivity extends AppCompatActivity {
             Log.e(TAG,"Error accessing data");
         }
 
-        isLogged = getSharedPreferences("PREFERENCES", MODE_PRIVATE)
-                .getBoolean("isLogged", false);
+        isLogged = getSharedPreferences(PREFERENCE_NAME, MODE_PRIVATE)
+                .getBoolean(IS_LOGGED, false);
         final NavigationView navigationView;
         if (isLogged) {
             setContentView(R.layout.activity_main);
@@ -130,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(intent);
                         } else {
                             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                            intent.putExtra("PARAMETER_BEHAVIOUR", "Login2");
+                            intent.putExtra(EXTRA_NAME, LOGIN_INSIDER);
                             startActivity(intent);
                         }
                         break;
