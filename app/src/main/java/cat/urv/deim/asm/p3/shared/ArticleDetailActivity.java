@@ -1,11 +1,9 @@
 package cat.urv.deim.asm.p3.shared;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,7 +25,7 @@ public class ArticleDetailActivity extends AppCompatActivity {
     StringBuilder tagsText;
     int count_tags;
     TextView title, description, tags;
-    ImageView image, favArticle, bookmarkArticle;
+    ImageView image;
     boolean fav=false, bookmark=false;
     public static final String EXTRA_ARTICLE_POSITION = "ARTICLE_POSITION";
 
@@ -46,8 +44,6 @@ public class ArticleDetailActivity extends AppCompatActivity {
         description = findViewById(R.id.descriptionArticleDetail);
         tags = findViewById(R.id.tagsArticleDetail);
         image = findViewById(R.id.imageArticleDetail);
-        favArticle = findViewById(R.id.fav_toggleButton);
-        bookmarkArticle = findViewById(R.id.bookmark_toggleButton);
 
         title.setText(articlesList.get(position_parameter).getTitle());
         description.setText(articlesList.get(position_parameter).getDescription());
@@ -73,11 +69,29 @@ public class ArticleDetailActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == android.R.id.home) finish();
-
-        return (super.onOptionsItemSelected(item));
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        if (item.getItemId() == R.id.fav_toggleButton) {
+            if (fav) {
+                item.setIcon(R.drawable.ic_favorite_border_white_24dp);
+                fav = false;
+            } else {
+                item.setIcon(R.drawable.ic_favorite_white_24dp);
+                fav = true;
+            }
+        }
+        if (item.getItemId() == R.id.bookmark_toggleButton) {
+            if (bookmark) {
+                item.setIcon(R.drawable.ic_bookmark_border_white_24dp);
+                bookmark = false;
+            } else {
+                item.setIcon(R.drawable.ic_bookmark_white_24dp);
+                bookmark = true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
