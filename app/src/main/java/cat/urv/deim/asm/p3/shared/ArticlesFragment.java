@@ -20,15 +20,7 @@ import cat.urv.deim.asm.p2.common.R;
 
 public class ArticlesFragment extends Fragment implements ArticleAdapter.OnArticleListener {
 
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
-    private List<Article> articlesList;
     private static final String EXTRA_ARTICLE_POSITION = "ARTICLE_POSITION";
-
-    static ArticlesFragment newInstance() {
-        return new ArticlesFragment();
-    }
 
     @Nullable
     @Override
@@ -36,20 +28,20 @@ public class ArticlesFragment extends Fragment implements ArticleAdapter.OnArtic
                              @Nullable Bundle savedInstanceState) {
         final View articlesView = inflater.inflate(R.layout.articles_fragment, container, false);
         super.onCreate(savedInstanceState);
-        recyclerView = articlesView.findViewById(R.id.article_recycler_view);
+        RecyclerView recyclerView = articlesView.findViewById(R.id.article_recycler_view);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
         recyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
-        layoutManager = new LinearLayoutManager(getActivity());
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
         // specify an adapter (see also next example)
         DataProvider dataProvider = DataProvider.getInstance(getActivity());
-        articlesList = dataProvider.getArticles();
-        mAdapter = new ArticleAdapter(articlesList, this);
+        List<Article> articlesList = dataProvider.getArticles();
+        RecyclerView.Adapter mAdapter = new ArticleAdapter(articlesList, this);
         recyclerView.setAdapter(mAdapter);
 
         return articlesView;

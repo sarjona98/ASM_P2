@@ -21,8 +21,6 @@ import cat.urv.deim.asm.p2.common.R;
 
 public class FAQsActivity extends AppCompatActivity {
 
-    private ExpandableListView expandableListView;
-    private ExpandableListViewAdapter expandableListViewAdapter;
     private List<String> listGroup;
     private HashMap<String, List<String>> listItem;
 
@@ -33,10 +31,10 @@ public class FAQsActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.title_faqs_activity);
 
-        expandableListView = findViewById(R.id.faqExp);
+        ExpandableListView expandableListView = findViewById(R.id.faqExp);
         showFaq();
 
-        expandableListViewAdapter = new ExpandableListViewAdapter(this, listGroup, listItem);
+        ExpandableListViewAdapter expandableListViewAdapter = new ExpandableListViewAdapter(this, listGroup, listItem);
         expandableListView.setAdapter(expandableListViewAdapter);
     }
 
