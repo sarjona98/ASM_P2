@@ -6,17 +6,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
 
+import cat.urv.deim.asm.Constant;
 import cat.urv.deim.asm.p2.common.ui.login.LoginActivity;
 
 public class SplashActivity extends Activity {
-
-    public static final String IS_LOGGED = "isLogged";
-    public static final String IS_ANONYMOUS = "isAnonymous";
-    public static final String IS_FIRST_RUN = "isFirstRun";
-    public static final String LOGIN_INITIAL = "login_initial";
-    public static final String EXTRA_NAME = "PARAMETER_BEHAVIOUR";
-    public static final String PREFERENCE_NAME = "PREFERENCES";
-    public static final int DELAY_MS = 2000;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,14 +18,14 @@ public class SplashActivity extends Activity {
 
         setContentView(R.layout.activity_splash);
 
-        final boolean isFirstRun = getSharedPreferences(PREFERENCE_NAME, MODE_PRIVATE)
-                .getBoolean(IS_FIRST_RUN, true);
+        final boolean isFirstRun = getSharedPreferences(Constant.PREFERENCE_NAME, MODE_PRIVATE)
+                .getBoolean(Constant.IS_FIRST_RUN, true);
 
-        final boolean isLogged = getSharedPreferences(PREFERENCE_NAME, MODE_PRIVATE)
-                .getBoolean(IS_LOGGED, false);
+        final boolean isLogged = getSharedPreferences(Constant.PREFERENCE_NAME, MODE_PRIVATE)
+                .getBoolean(Constant.IS_LOGGED, false);
 
-        final boolean isAnonymous = getSharedPreferences(PREFERENCE_NAME, MODE_PRIVATE)
-                .getBoolean(IS_ANONYMOUS, false);
+        final boolean isAnonymous = getSharedPreferences(Constant.PREFERENCE_NAME, MODE_PRIVATE)
+                .getBoolean(Constant.IS_ANONYMOUS, false);
 
         new Handler().postDelayed(new Runnable(){
             public void run(){
@@ -46,12 +39,12 @@ public class SplashActivity extends Activity {
                     }
                     else {
                         intent = new Intent(SplashActivity.this, LoginActivity.class);
-                        intent.putExtra(EXTRA_NAME, LOGIN_INITIAL);
+                        intent.putExtra(Constant.EXTRA_NAME, Constant.LOGIN_INITIAL);
                     }
                 }
                 startActivity(intent);
                 finish();
             }
-        }, DELAY_MS);
+        }, Constant.DELAY_MS);
     }
 }

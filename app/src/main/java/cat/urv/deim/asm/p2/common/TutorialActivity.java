@@ -18,33 +18,22 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import cat.urv.deim.asm.Constant;
 import cat.urv.deim.asm.p2.common.ui.login.LoginActivity;
 
 public class TutorialActivity extends FragmentActivity {
-    /**
-     * The number of pages (wizard steps) to show in this demo.
-     */
-    private static final int NUM_PAGES = 3;
-    public static final String LOGIN_INITIAL = "login_initial";
-    public static final String EXTRA_NAME = "PARAMETER_BEHAVIOUR";
-    public static final String PREFERENCE_NAME = "PREFERENCES";
-    public static final String IS_FIRST_RUN = "isFirstRun";
 
-    /**
-     * The pager widget, which handles animation and allows swiping horizontally to access previous
-     * and next wizard steps.
-     */
     private ViewPager mPager;
 
     private void finishTutorial() {
         SharedPreferences preferences =
-                getSharedPreferences(PREFERENCE_NAME, MODE_PRIVATE);
+                getSharedPreferences(Constant.PREFERENCE_NAME, MODE_PRIVATE);
 
         preferences.edit()
-                .putBoolean(IS_FIRST_RUN, false).apply();
+                .putBoolean(Constant.IS_FIRST_RUN, false).apply();
 
         Intent intent = new Intent(TutorialActivity.this, LoginActivity.class);
-        intent.putExtra(EXTRA_NAME, LOGIN_INITIAL);
+        intent.putExtra(Constant.EXTRA_NAME, Constant.LOGIN_INITIAL);
         startActivity(intent);
 
         finish();
@@ -104,7 +93,7 @@ public class TutorialActivity extends FragmentActivity {
                     mProgressBar.setProgress((position)*33+1);
                     rightScroll = true;
                 }
-                mCountDownTimer = new CountDownTimer(1500, 15) {
+                mCountDownTimer = new CountDownTimer(Constant.TIMER_MS_IN_FUTURE, Constant.TIMER_COUNTDOWN_INTERVAL) {
                     @Override
                     public void onTick(long millisUntilFinished) {
                         if (leftScroll) {
@@ -165,10 +154,6 @@ public class TutorialActivity extends FragmentActivity {
         }
     }
 
-    /**
-     * A simple pager adapter that represents 5 Tutorial1Fragment objects, in
-     * sequence.
-     */
     public static class ScreenSlidePagerAdapter extends FragmentPagerAdapter {
 
         ScreenSlidePagerAdapter(FragmentManager fm) {
@@ -189,7 +174,7 @@ public class TutorialActivity extends FragmentActivity {
 
         @Override
         public int getCount() {
-            return NUM_PAGES;
+            return Constant.NUM_PAGES_TUTORIAL;
         }
     }
 

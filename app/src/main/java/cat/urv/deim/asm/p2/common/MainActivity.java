@@ -22,6 +22,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import java.util.Objects;
 
+import cat.urv.deim.asm.Constant;
 import cat.urv.deim.asm.p2.common.ui.home.HomeFragment;
 import cat.urv.deim.asm.p2.common.ui.login.LoginActivity;
 import cat.urv.deim.asm.p3.shared.ArticlesFragment;
@@ -29,23 +30,17 @@ import cat.urv.deim.asm.p3.shared.FAQsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String LOGIN_INSIDER = "login_insider";
-    public static final String EXTRA_NAME = "PARAMETER_BEHAVIOUR";
-    public static final String PREFERENCE_NAME = "PREFERENCES";
-    public static final String IS_LOGGED = "isLogged";
-
     private static androidx.fragment.app.Fragment actualFrag;
 
     private AppBarConfiguration mAppBarConfiguration;
     private boolean isLogged;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        isLogged = getSharedPreferences(PREFERENCE_NAME, MODE_PRIVATE)
-                .getBoolean(IS_LOGGED, false);
+        isLogged = getSharedPreferences(Constant.PREFERENCE_NAME, MODE_PRIVATE)
+                .getBoolean(Constant.IS_LOGGED, false);
         final NavigationView navigationView;
         if (isLogged) {
             setContentView(R.layout.activity_main);
@@ -81,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(intent);
                         } else {
                             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                            intent.putExtra(EXTRA_NAME, LOGIN_INSIDER);
+                            intent.putExtra(Constant.EXTRA_NAME, Constant.LOGIN_INSIDER);
                             startActivity(intent);
                         }
                         break;

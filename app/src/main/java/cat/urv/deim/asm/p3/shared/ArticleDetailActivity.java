@@ -14,6 +14,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 import java.util.Objects;
 
+import cat.urv.deim.asm.Constant;
 import cat.urv.deim.asm.libraries.commanagerdc.models.Article;
 import cat.urv.deim.asm.libraries.commanagerdc.models.Tag;
 import cat.urv.deim.asm.libraries.commanagerdc.providers.DataProvider;
@@ -27,7 +28,6 @@ public class ArticleDetailActivity extends AppCompatActivity {
     TextView title, description, tags;
     ImageView image;
     boolean fav=false, bookmark=false;
-    public static final String EXTRA_ARTICLE_POSITION = "ARTICLE_POSITION";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class ArticleDetailActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.title_activity_article_detail);
 
-        position_parameter = Objects.requireNonNull(getIntent().getExtras()).getInt(EXTRA_ARTICLE_POSITION);
+        position_parameter = Objects.requireNonNull(getIntent().getExtras()).getInt(Constant.EXTRA_ARTICLE_POSITION);
         DataProvider dataProviderArticles = DataProvider.getInstance(this);
         List<Article> articlesList = dataProviderArticles.getArticles();
 

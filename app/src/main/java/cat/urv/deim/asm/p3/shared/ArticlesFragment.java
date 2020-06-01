@@ -14,13 +14,12 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import cat.urv.deim.asm.Constant;
 import cat.urv.deim.asm.libraries.commanagerdc.models.Article;
 import cat.urv.deim.asm.libraries.commanagerdc.providers.DataProvider;
 import cat.urv.deim.asm.p2.common.R;
 
 public class ArticlesFragment extends Fragment implements ArticleAdapter.OnArticleListener {
-
-    private static final String EXTRA_ARTICLE_POSITION = "ARTICLE_POSITION";
 
     @Nullable
     @Override
@@ -50,7 +49,7 @@ public class ArticlesFragment extends Fragment implements ArticleAdapter.OnArtic
     @Override
     public void onArticleClick(int position) {
         Intent intent = new Intent(this.getActivity(), ArticleDetailActivity.class);
-        intent.putExtra(EXTRA_ARTICLE_POSITION, position);
+        intent.putExtra(Constant.EXTRA_ARTICLE_POSITION, position);
         startActivity(intent);
     }
 }

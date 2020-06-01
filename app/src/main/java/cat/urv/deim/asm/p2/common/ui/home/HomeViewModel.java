@@ -6,18 +6,20 @@ import androidx.lifecycle.ViewModel;
 
 import java.util.Locale;
 
+import cat.urv.deim.asm.Constant;
+
 public class HomeViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
     public HomeViewModel() {
         mText = new MutableLiveData<>();
-        if (Locale.getDefault().getLanguage().equals("es")){
-            mText.setValue("Esta es la página por defecto");
-        } else if (Locale.getDefault().getLanguage().equals("ca")) {
-            mText.setValue("Aquesta és la pàgina per defecte");
+        if (Locale.getDefault().getLanguage().equals(Constant.SPANISH)){
+            mText.setValue(Constant.DEFAULT_MESSAGE_SPANISH);
+        } else if (Locale.getDefault().getLanguage().equals(Constant.CATALAN)) {
+            mText.setValue(Constant.DEFAULT_MESSAGE_CATALAN);
         } else {
-            mText.setValue("This is Default page");
+            mText.setValue(Constant.DEFAULT_MESSAGE);
         }
     }
 
