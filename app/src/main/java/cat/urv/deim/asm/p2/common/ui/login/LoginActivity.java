@@ -7,18 +7,15 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Objects;
 
 import cat.urv.deim.asm.p2.common.ErrorLoginActivity;
 import cat.urv.deim.asm.p2.common.MainActivity;
-import cat.urv.deim.asm.p2.common.ProfileActivity;
 import cat.urv.deim.asm.p2.common.R;
 
 public class LoginActivity extends AppCompatActivity {
